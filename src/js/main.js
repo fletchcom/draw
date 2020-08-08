@@ -95,6 +95,8 @@ var draw = (function() {
       this.drawLine();
       } else if(shape==='path') {
       this.drawPath();
+      } else if(shape==='triangle') {
+      this.drawTriangle();
       } else if(shape==='circle') {
       this.drawCircle();
       } else {
@@ -119,6 +121,31 @@ var draw = (function() {
     ctx.fill();
     }, 
 
+    //Draw a triangle
+    drawTriangle: function(x1,y1,x2,y2,x3,y3) {
+      ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+    //The length of side a is the difference between point 1 and point 2's x (horizontal) axis.
+    var a = (x1 - x2);
+    //The length of side b is the difference between point 2 and point 3's y (vertical axis)
+    var b = (y2 - y3);
+    //Too find the length of the last side c, we must use the pythagorean theorem.
+    //c*c=a*a+b*b
+    //square side a and b, and add the result.  Then find the square root of the result.
+    var c = Math.sqrt(((a*a) + (b*b)));
+    //We must use the Cosine rule to solve the triangles 3 angles.
+    //c^2 = a^2 + b^2 - c^2 
+    var A = (Math.acos(((c*c)+(b*b)-(a*a))/(2*c*b)))*(180/Math.PI);
+    var B = (Math.acos(((c*c)+(a*a)-(b*b))/(2*a*c)))*(180/Math.PI); 
+    var C = (Math.acos(((a*a)+(b*b)-(c*c))/(2*a*b)))*(180/Math.PI);
+  
+    ctx.beginPath();
+    ctx.moveTo(x1, y1, y3);
+    ctx.lineTo(x2, y2, y3);
+    ctx.stroke();
+    ctx.fillTriangle(x1,y1,(x2-x1),(x3-x2),(y2-y1),(y3-y2));
+
+    },
+
     //Draw a line
       drawLine: function() {
     //Start by using random fill colors.
@@ -138,7 +165,7 @@ var draw = (function() {
         ctx.lineTo(x, y);
         ctx.stroke();
       },
-  
+
     //Draw a rectangle
       drawRect: function() {
     //Start by using random fill colors.
@@ -194,6 +221,10 @@ draw.getCanvas().addEventListener('mousedown', function() {
   //Add a button react listener
   document.getElementById('btnRect').addEventListener('click',function(){
     draw.setShape('rectangle');
+}, false);
+
+  document.getElementById('btnTriangle').addEventListener('click',function(){
+  draw.setShape('triangle');
 }, false);
 
   document.getElementById('btnLine').addEventListener('click',function(){
