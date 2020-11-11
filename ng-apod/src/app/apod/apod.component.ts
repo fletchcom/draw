@@ -33,9 +33,9 @@ export class ApodComponent implements OnInit {
       (response:any)=>{
         this.apod = response;
         this.date = this.randomDate(new Date(1995,5,16), new Date());
-        console.log(this.apod);
       }
     );
+
   }
 
   randomDate(start, end): string{
