@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApodComponent } from './apod/apod.component';
 
+import { SafePipeModule } from 'safe-pipe';
+
 import { NgApodConfig } from '../../config/ng-apod.config';
 
 @NgModule({
@@ -16,7 +18,8 @@ import { NgApodConfig } from '../../config/ng-apod.config';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SafePipeModule
   ],
   providers: [
     NgApodConfig

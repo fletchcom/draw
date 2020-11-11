@@ -7,7 +7,9 @@
     Anything inside of the double quotes after the equals sign
     be treated as executable code.
   -->
-  <img [src]="apod.url" [alt]="apod.title">
+  <img *ngIf="apod.media_type==='image'" [src]="apod.url" [alt]="apod.title">
+
+  <iframe *ngIf="apod.media_type==='video'" [src]="apod.url | safe: 'resourceUrl'" frameborder="0" allowfullscreen></iframe>
 
   <div>
     <!-- 
