@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// 1. import the component to which you want to redirect.
 import { ApodComponent } from './apod/apod.component';
 
 const routes: Routes = [
