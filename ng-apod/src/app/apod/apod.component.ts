@@ -25,7 +25,6 @@ export class ApodComponent implements OnInit {
   }
 
   getApod(date:string): void{
-
     if(!date){
       date = new Date().toISOString().slice(0,10);
     }
@@ -37,7 +36,6 @@ export class ApodComponent implements OnInit {
         console.log(this.apod);
       }
     );
-
   }
 
   randomDate(start, end): string{
@@ -48,5 +46,4 @@ export class ApodComponent implements OnInit {
 
     return new Date(date).toISOString().slice(0,10);
   }
-
 }
