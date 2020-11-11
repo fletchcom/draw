@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-//Import HttpClient
 import { HttpClient } from '@angular/common/http';
 
-//Import Observable
 import { Observable } from 'rxjs';
-
-//Import Apod
 import { Apod } from '../models/apod';
 
 import { NgApodConfig } from '../../../config/ng-apod.config';
@@ -24,9 +20,8 @@ export class ApodService {
     this.url=`https://api.nasa.gov/planetary/apod?api_key=${this.ngApodConfig.key}`;
   }
 
-  //Return an Observable Apod model
-  getApod(date:string): Observable<Apod>{
-    return this.http.get<Apod>(`${this.url}&date=${date}`);
+  getApod(): Observable<Apod>{
+    return this.http.get<Apod>(this.url);
   }
 
 }
