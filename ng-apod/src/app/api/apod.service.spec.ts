@@ -1,16 +1,27 @@
-import { TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { ApodService } from './apod.service';
+import { Observable } from 'rxjs';
+import { Apod } from '../models/apod';
 
-describe('ApodService', () => {
-  let service: ApodService;
+import { NgApodConfig } from '../../../config/ng-apod.config';
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ApodService);
-  });
+@Injectable({
+  providedIn: 'root'
+})
+export class ApodService {
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+  private url:string
+
+  constructor(
+    private http: HttpClient,
+    private ngApodConfig: NgApodConfig
+  ) {
+    this.url=`https://api.nasa.gov/planetary/apod?api_key=${this.ngApodConfig.key}`;
+  }
+
+  getApod(): Observable<Apod>{
+    return this.http.get<Apod>(this.url);
+  }
+
+}

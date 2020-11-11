@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-//Import HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +16,7 @@ import { NgApodConfig } from '../../config/ng-apod.config';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule //import HttpClientModule
+    HttpClientModule
   ],
   providers: [
     NgApodConfig
