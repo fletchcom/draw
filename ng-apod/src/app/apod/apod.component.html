@@ -1,5 +1,5 @@
 <main *ngIf="apod">
-
+  <button *ngIf="date" [routerLink]="['/apod', this.date]">Random</button>
   <h1>{{ apod.title }}</h1>
 
   <!-- 
@@ -9,7 +9,14 @@
   -->
   <img *ngIf="apod.media_type==='image'" [src]="apod.url" [alt]="apod.title">
 
-  <iframe *ngIf="apod.media_type==='video'" [src]="apod.url | safe: 'resourceUrl'" frameborder="0" allowfullscreen></iframe>
+  <div id="video" *ngIf="apod.media_type==='video'">
+    <iframe [src]="apod.url | safe: 'resourceUrl'" frameborder="0" allowfullscreen></iframe>
+  </div>
+  
+  <div>
+    <span *ngIf="apod.copyright" class="copy">&copy; {{ apod.copyright }} </span>
+    {{ apod.date }}
+  </div>
 
   <div>
     <!-- 
