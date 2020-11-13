@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
-// 1. Import HttpClient
-import { HttpClient } from '@angular/common/http';
+// 1. Import HttpHeaders
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-// 2. Import Observable 
 import { Observable } from 'rxjs';
 
-
-// 3. Import User
+// 2. Import the User object (model)
 import { User } from '../models/user';
+
+// 3. Create a JSON header to be attached to outbound post requests
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  // 4. Set the domain portion of the url
+  private url:string = 'http://localhost:3000/api/auth';
 
   constructor(
-    // 5. Inject HttpClient into the constructor
     private http:HttpClient
   ) { }
 
-  //Return an Observable array or User objects
-  test(): Observable<User[]>{
-    let url = 'http://localhost:3000/api/users'
-    //Make a get request over HTTP
-    return this.http.get<User[]>(url);
+  // 5. Replace the test method with a working implementation of login.
+  login(user: User): Observable<User> {
+    return this.http.post<User>(`${this.url}/login`, user, httpOptions);
   }
 }

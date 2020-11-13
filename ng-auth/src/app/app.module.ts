@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// 1. Import the app module
+// 1. Import FormsModule 
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +20,9 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // 2. Add the module to the list of imports.
-    HttpClientModule
+    HttpClientModule,
+    // 2. Add FormsModule to the imports list
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
