@@ -25,4 +25,7 @@ export class ArticlesService {
   editArticle (article: Article): Observable<Article> {
     return this.http.put<Article>(this.url, article, httpOptions);
   }
+  deleteArticle (id: string): Observable<Article> {
+    return this.http.delete<Article>(`${this.url}/${id}`);
+  }
 }
