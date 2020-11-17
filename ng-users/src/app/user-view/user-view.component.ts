@@ -15,9 +15,9 @@ export class UserViewComponent implements OnInit {
   user: User;
 
   constructor(
-    private route: ActivatedRoute,
     private usersService: UsersService,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
