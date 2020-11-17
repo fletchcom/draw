@@ -3,6 +3,10 @@ import { NgModule }             from '@angular/core';
 // 1. Routing Libraries
 import { RouterModule, Routes } from '@angular/router';
 
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
+
 // 2. Import the UserComponent
 import { UsersComponent }   from './users/users.component';
 import { UserViewComponent }   from './user-view/user-view.component';
@@ -17,7 +21,11 @@ import { ArticleEditComponent }   from './article-edit/article-edit.component';
 // 3. Declare your routes
 const routes: Routes = [
   // 4. The default route
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // 5. Map /auth to the AuthComponent
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'register', component: RegisterComponent },
   // 5. Map /users to the UsersComponent
   { path: 'users', component: UsersComponent },
   { path: 'users/view/:id', component: UserViewComponent },
