@@ -22,7 +22,7 @@ import { ArticleEditComponent }   from './article-edit/article-edit.component';
 const routes: Routes = [
   // 4. The default route
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // 5. Map /auth to the AuthComponent
+  // Map /login to the LoginComponent
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
