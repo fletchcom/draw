@@ -10,9 +10,17 @@ const httpOptions = {
 @Injectable(
   {providedIn: 'root'
 })
+
 export class UsersService {
+  // private url: string = 'http://localhost:3000/api/auth';
   private url: string = 'http://localhost:3000/api/users';
+
   constructor(private http: HttpClient) { }
+
+  login(user: User): Observable<User> {
+    return this.http.post<User>(`${this.url}/login`, user, httpOptions);
+  }
+
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
   }
@@ -28,7 +36,10 @@ export class UsersService {
   deleteUser (id: string): Observable<User> {
     return this.http.delete<User>(`${this.url}/${id}`);
   }
-  test(): string{
-    return 'success!';
-  }
+  //Return an Observable array or User objects
+  // test(): Observable<User[]>{
+    // let url = 'http://localhost:3000/api/users'
+    //Make a get request over HTTP
+    // return this.http.get<User[]>(url);
+  // }
 }
