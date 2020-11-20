@@ -27,9 +27,9 @@ export class ArticlesComponent implements OnInit {
   // 5. Create a local wrapper for
   getArticles(): void {
     this.articlesService.getArticles().subscribe(
-      (response) => {
-        this.articles = response,
-        console.log(this.articles)
+      (response:any) => {
+        this.articles = response.articles
+        //console.log(this.users)
       }
     );
   }
