@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from './user';
 
-@Injectable({
-  providedIn: 'root'
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable(
+  {providedIn: 'root'
 })
 export class UsersService {
-
-  constructor() { }
+  private url: string = 'http://localhost:3000/api/users';
+  constructor(private http: HttpClient) { }
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url);
+  }
 }
