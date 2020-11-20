@@ -12,7 +12,7 @@ import { ArticlesComponent }   from './articles/articles.component';
 
 // 3. Declare your routes
 const routes: Routes = [
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
+  { path: '', redirectTo: '/articles', pathMatch: 'full' },
   { path: 'users', component: UsersComponent },
   { path: 'users/view/:id', component: UserViewComponent },
   { path: 'users/create', component: UserCreateComponent },
