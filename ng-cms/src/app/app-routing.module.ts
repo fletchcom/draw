@@ -4,6 +4,9 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // 2. Import the UserComponent
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
 import { UserViewComponent }   from './user-view/user-view.component';
 import { UserCreateComponent }   from './user-create/user-create.component';
 import { UserEditComponent }   from './user-edit/user-edit.component';
@@ -16,6 +19,9 @@ import { UsersComponent } from './users/users.component';
 // 3. Declare your routes
 const routes: Routes = [
   { path: '', redirectTo: '/articles', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'users', component: UsersComponent },
   { path: 'users/view/:id', component: UserViewComponent },
   { path: 'users/create', component: UserCreateComponent },
