@@ -12,7 +12,7 @@
 
   <div>
     <label for="email">Email</label>
-    <input [(ngModel)]="user.email" type="text" name="email" id="email">
+    <input [(ngModel)]="user.email" type="email" name="email" id="email">
     <div *ngIf="errors.email">{{errors.email.message}}</div>
   </div>
 
